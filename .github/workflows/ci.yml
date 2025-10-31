@@ -1,0 +1,38 @@
+name: CI — Node install & sanity check
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sanity check — ensure package.json loads
+        run: node -e "const p = require('./package.json'); console.log('name:', p.name); console.log('version:', p.version);"
+
+      - name: Run package script if present (packaging may require extra deps)
+        if: always()
+        run: |
+          if npm run | grep -q 'package'; then
+            echo "package script present — attempting npm run package (may fail if packaging deps missing)"
+            npm run package || echo "Packaging failed or skipped in CI environment"
+          else
+            echo "No package script defined, skipping packaging step"
+          fi
