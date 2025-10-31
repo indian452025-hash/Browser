@@ -1,0 +1,50 @@
+:root {
+  --bg: #f6f8fa;
+  --toolbar: #ffffff;
+  --accent: #0366d6;
+  --muted: #6a737d;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+#toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--toolbar);
+  align-items: center;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+#toolbar input[type="text"] {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+}
+
+#toolbar button {
+  background: transparent;
+  border: none;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#toolbar button:hover {
+  background: rgba(3, 102, 214, 0.06);
+  border-radius: 4px;
+}
+
+webview {
+  width: 100%;
+  height: calc(100vh - 52px);
+  border: none;
+}

@@ -1,0 +1,1 @@
+{"name": "simple-browser","version": "0.1.0","description": "A minimal Electron-based browser","main": "main.js","scripts": {"start": "electron .","package": "electron-packager . SimpleBrowser --platform=darwin,linux,win32 --arch=x64 --out=dist --overwrite"},"devDependencies": {"electron": "^26.0.0"},"author": "indian452025-hash","license": "MIT"}
